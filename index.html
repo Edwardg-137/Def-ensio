@@ -12,11 +12,12 @@
 .top{position:fixed;top:max(24px,env(safe-area-inset-top));left:max(32px,env(safe-area-inset-left));right:max(32px,env(safe-area-inset-right));display:flex;justify-content:space-between;align-items:center;pointer-events:none;z-index:2}.brand{display:flex;align-items:center;gap:10px;font-weight:750;font-size:15px;letter-spacing:-.4px}.brand svg{width:24px;height:24px}.tools{display:flex;gap:18px;align-items:center}.round{font-size:11px;letter-spacing:1.3px;color:var(--muted)}.sound{pointer-events:auto;display:grid;place-items:center;width:44px;height:44px;border:1px solid var(--line);border-radius:50%;background:var(--paper);cursor:pointer}.sound svg{width:19px;height:19px}.sound:hover{background:#e7e9dc}.sound .slash{display:none}.sound[aria-pressed="true"] .slash{display:block}
 .screen{position:fixed;inset:0;z-index:1;pointer-events:none;display:flex;align-items:center;padding:100px 8vw 130px}.intro{width:46%;max-width:580px}h1{font-size:clamp(64px,8.2vw,118px);line-height:.91;letter-spacing:-.04em;margin:0 0 28px;font-weight:800}h1 span{color:var(--blue)}.lead{font-size:18px;line-height:1.55;max-width:320px;margin:0 0 32px;color:var(--muted)}.play{pointer-events:auto;border:0;background:var(--ink);color:var(--paper);border-radius:7px;padding:18px 23px;min-height:56px;display:inline-flex;gap:34px;align-items:center;cursor:pointer;font-size:15px;font-weight:700}.play:hover{background:var(--blue)}.play svg{width:20px;height:20px}.detail{font-size:12px;color:var(--muted);margin-top:15px}.intro .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--blue);margin-right:7px}.board-label{position:absolute;left:72%;bottom:22%;transform:translateX(-50%);white-space:nowrap;font-size:12px;color:var(--muted)}.board-label b{color:var(--blue)}
 .guide{position:fixed;bottom:max(30px,env(safe-area-inset-bottom));left:8vw;right:8vw;z-index:2;pointer-events:none;display:flex;gap:48px;padding-top:21px;border-top:1px solid var(--line)}.instruction{display:flex;gap:12px;align-items:flex-start;font-size:12px;line-height:1.6;color:var(--muted)}.instruction svg{width:23px;height:23px;flex-shrink:0;color:var(--ink);margin-top:2px}.instruction b{display:block;font-weight:700;color:var(--ink);font-size:13px}.touch-copy{display:none}.legend{margin-left:auto;display:flex;align-items:center;gap:8px;white-space:nowrap;font-size:11px;color:var(--muted)}.swatch{width:9px;height:9px;display:inline-block;border-radius:50%;background:var(--blue)}.swatch.enemy{background:#d85843;margin-left:12px}
-.hud{position:fixed;top:92px;left:50%;transform:translateX(-50%);z-index:2;pointer-events:none;display:flex;align-items:center;gap:32px}.stat{min-width:85px;text-align:center}.stat label{display:block;font-size:11px;letter-spacing:1px;color:var(--muted);margin-bottom:4px}.stat strong{font-size:34px;font-weight:500;letter-spacing:-1.5px;font-variant-numeric:tabular-nums}.divider{width:1px;height:36px;background:var(--line)}.hud .urgent{color:#bd3e2d}.playing .guide{justify-content:center;gap:26px;border:0;padding:0;bottom:max(22px,env(safe-area-inset-bottom))}.playing .instruction{font-size:11px}.playing .instruction b{display:inline;font-size:11px;margin-right:5px}.playing .instruction svg{width:17px;height:17px;margin-top:0}.playing .legend{display:none}.playing .instruction:first-child{display:none}.playing .round{display:none}.end-title{font-size:clamp(40px,5vw,64px);letter-spacing:-.04em;line-height:1;margin:0 0 18px}.result{font-size:clamp(88px,12vw,150px);letter-spacing:-.04em;line-height:1;color:var(--blue);font-weight:750;margin:0}.result-label{font-size:15px;color:var(--muted);margin:8px 0 30px}.end .lead{font-size:16px;margin-bottom:25px} [hidden]{display:none!important}
+.hud{position:fixed;top:92px;left:50%;transform:translateX(-50%);z-index:2;pointer-events:none;display:flex;align-items:center;gap:32px}.stat{min-width:85px;text-align:center}.stat label{display:block;font-size:11px;letter-spacing:1px;color:var(--muted);margin-bottom:4px}.stat strong{font-size:34px;font-weight:500;letter-spacing:-1.5px;font-variant-numeric:tabular-nums}.divider{width:1px;height:36px;background:var(--line)}.hud .urgent{color:#bd3e2d}.power{position:absolute;top:78px;left:50%;transform:translateX(-50%);white-space:nowrap;font-size:12px;color:var(--blue)}.playing .guide{justify-content:center;gap:26px;border:0;padding:0;bottom:max(22px,env(safe-area-inset-bottom))}.playing .instruction{font-size:11px}.playing .instruction b{display:inline;font-size:11px;margin-right:5px}.playing .instruction svg{width:17px;height:17px;margin-top:0}.playing .legend{display:none}.playing .instruction:first-child{display:none}.playing .round{display:none}.end-title{font-size:clamp(40px,5vw,64px);letter-spacing:-.04em;line-height:1;margin:0 0 18px}.result{font-size:clamp(88px,12vw,150px);letter-spacing:-.04em;line-height:1;color:var(--blue);font-weight:750;margin:0}.result-label{font-size:15px;color:var(--muted);margin:8px 0 30px}.end .lead{font-size:16px;margin-bottom:25px} [hidden]{display:none!important}
 @media(pointer:coarse){.mouse-copy{display:none}.touch-copy{display:inline}}
 @media(max-width:650px){.top{top:max(15px,env(safe-area-inset-top));left:21px;right:18px}.brand{font-size:14px}.round{display:none}.screen{align-items:flex-start;padding:105px 26px 0}.intro{width:100%;max-width:none}h1{font-size:clamp(57px,14vw,80px);line-height:.93;margin:0 0 15px}h1 br{display:none}.lead{font-size:15px;max-width:275px;line-height:1.45;margin-bottom:20px}.play{min-height:50px;padding:14px 19px;font-size:14px;gap:30px}.detail{font-size:11px;margin-top:10px}.board-label{left:50%;bottom:26%;font-size:11px}.guide{left:25px;right:25px;bottom:max(20px,env(safe-area-inset-bottom));gap:16px;flex-wrap:wrap;padding-top:15px}.instruction{font-size:11px;gap:9px;flex:1;min-width:130px}.instruction b{font-size:12px}.instruction:first-child{flex-basis:100%;min-width:100%}.instruction:first-child b{display:inline;margin-right:5px}.instruction:first-child svg{width:18px;height:18px;margin-top:0}.legend{display:none}.hud{top:82px;gap:27px}.stat strong{font-size:30px}.playing .guide{flex-wrap:nowrap;gap:10px;left:15px;right:15px}.playing .instruction{font-size:11px;min-width:0;flex:initial}.playing .instruction b{font-size:10px}.playing .instruction svg{display:none}.end .intro{padding-top:30px}.end-title{font-size:43px}.result{font-size:100px}.end .board-label{bottom:25%}}
 @media(max-height:580px) and (min-width:651px){h1 br{display:none}h1{font-size:clamp(36px,5.2vw,65px)!important}.detail,.board-label{display:none}.screen{padding-top:80px;padding-bottom:105px}h1{font-size:70px;margin-bottom:16px}.lead{font-size:15px;margin-bottom:20px}.guide{bottom:18px;padding-top:12px}.board-label{bottom:24%}.hud{top:70px}}
 @media(max-height:700px) and (max-width:650px){.board-label{display:none}.screen{padding-top:84px}h1{font-size:54px}.lead{font-size:13px;margin-bottom:12px}.detail{display:none}.guide{bottom:12px;gap:9px;padding-top:10px}.board-label{bottom:25%}.instruction{line-height:1.4}.end .intro{padding-top:0}.end-title{font-size:34px}.result{font-size:72px}.result-label{margin-bottom:16px}.end .lead{font-size:13px;margin-bottom:16px}}
+.notice{position:fixed;bottom:max(88px,env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);z-index:3;max-width:calc(100% - 40px);width:max-content;padding:11px 16px;border-radius:6px;background:var(--ink);color:var(--paper);font-size:13px;pointer-events:none}
 </style>
 </head>
 <body>
@@ -33,22 +34,23 @@
  <div class="intro"><h2 id="end-title" class="end-title">Tiempo cumplido.</h2><p id="result" class="result">0</p><p class="result-label">puntos en 90 segundos</p><p class="lead">Un poco de atracción.<br>Otro poco de estrategia.</p><button class="play" id="retry">Volver a jugar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></button></div>
  <div class="board-label">Cada color cambia la partida.</div>
 </section>
-<div class="hud" id="hud" hidden><div class="stat"><label>PUNTOS</label><strong id="score">0</strong></div><div class="divider"></div><div class="stat"><label>TIEMPO</label><strong id="time">1:30</strong></div></div>
+<div class="hud" id="hud" hidden><div class="stat"><label>PUNTOS</label><strong id="score">0</strong></div><div class="divider"></div><div class="stat"><label>TIEMPO</label><strong id="time">1:30</strong></div><div class="power" title="Cada 10 puntos ganados elimina todas las figuras de un mismo color enemigo.">Pulso de color · <span id="power-progress">0/10</span></div></div>
 <footer class="guide" id="guide">
- <div class="instruction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M8 12h8m-4-4v8"/></svg><div><b>Tu color suma +1.</b> Los demás restan −2 y convierten a tus aliadas.</div></div>
+ <div class="instruction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M8 12h8m-4-4v8"/></svg><div><b>Tu color suma +1.</b> Los demás restan −2 y convierten aliadas. Cada 10 puntos ganados limpias un color enemigo.</div></div>
  <div class="instruction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m6 3 12 9-6 1-3 6zM17 19h5m-2.5-2.5v5"/></svg><div><b>Arrastra para apartar.</b><span class="mouse-copy"> Clic izquierdo.</span><span class="touch-copy"> Mantén y mueve.</span></div></div>
- <div class="instruction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="m9 9 6 6m0-6-6 6"/></svg><div><b>Elimina cada 1,5 s.</b><span class="mouse-copy"> Clic derecho.</span><span class="touch-copy"> Pulsa 0,4 s sin mover.</span></div></div>
+ <div class="instruction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="m9 9 6 6m0-6-6 6"/></svg><div><b>Elimina cada 1 s.</b><span class="mouse-copy"> Clic derecho.</span><span class="touch-copy"> Pulsa 0,4 s sin mover.</span></div></div>
  <div class="legend"><i class="swatch"></i> Aliadas <i class="swatch enemy"></i> Enemigas</div>
 </footer>
+<div id="notice" class="notice" role="status" hidden></div>
 <noscript>Activa JavaScript para jugar a Imán de color.</noscript>
 <script>
 'use strict';
 const COLORS=['#355ce0','#d85843','#aa760b','#268570'];
-const R=14, PLAYER_R=23, COOLDOWN=1.5, DURATION=90;
+const R=14, PLAYER_R=23, COOLDOWN=1, DURATION=90;
 
 // La simulación solo recibe estado, tiempo y azar; no lee el DOM.
 function createGame(w,h){
- return {w,h,color:0,figures:[],nextId:1,score:0,time:DURATION,spawnClock:0,cooldown:0,drag:null,events:[]};
+ return {w,h,color:0,figures:[],nextId:1,score:0,earned:0,time:DURATION,spawnClock:0,cooldown:0,drag:null,events:[]};
 }
 function distance(a,b){return Math.hypot(a.x-b.x,a.y-b.y)}
 function center(s){return {x:s.w/2,y:s.h/2}}
@@ -59,7 +61,8 @@ function spawn(s,random=Math.random){
   const edge=Math.floor(random()*4),t=random();
   const pos=edge<2?{x:edge===0?rx:s.w-rx,y:ry+t*(s.h-2*ry)}:{x:rx+t*(s.w-2*rx),y:edge===2?ry:s.h-ry};
   if(distance(pos,p)<margin||s.figures.some(f=>distance(f,pos)<2*R))continue;
-  const color=random()<.45?s.color:(s.color+1+Math.floor(random()*3))%4;
+  const alliedChance=.8-.35*(1-s.time/DURATION);
+  const color=random()<alliedChance?s.color:(s.color+1+Math.floor(random()*3))%4;
   const figure={...pos,id:s.nextId++,color,shape:Math.floor(random()*3),vx:0,vy:0,impulse:0};
   s.figures.push(figure);
   return figure;
@@ -80,17 +83,26 @@ function eliminate(s,id){
  s.events.push({type:'remove',x:f.x,y:f.y,color:f.color});
  return true;
 }
+function power(s,color=s.figures.find(f=>f.color!==s.color)?.color){
+ if(color===undefined||color===s.color||!s.figures.some(f=>f.color===color))return false;
+ s.figures=s.figures.filter(f=>f.color!==color);
+ if(s.drag&&!s.figures.some(f=>f.id===s.drag.id))s.drag=null;
+ s.events.push({type:'power',color});
+ return true;
+}
 function collisions(s){
- const p=center(s),removed=new Set();
+ const p=center(s),removed=new Set(),earnedBefore=s.earned;
  for(const f of s.figures){
   if(distance(f,p)<=PLAYER_R+R){
    const allied=f.color===s.color;
    s.score+=allied?1:-2;
+   if(allied)s.earned++;
    s.events.push({type:allied?'gain':'loss',x:f.x,y:f.y,color:f.color});
    removed.add(f.id);
   }
  }
  s.figures=s.figures.filter(f=>!removed.has(f.id));
+ if(Math.floor(s.earned/10)>Math.floor(earnedBefore/10))power(s);
  for(const enemy of s.figures){
   if(enemy.color===s.color)continue;
   for(const ally of s.figures){
@@ -142,10 +154,10 @@ function update(s,dt,random=Math.random){
 
 const canvas=document.getElementById('field'),ctx=canvas.getContext('2d');
 const startScreen=document.getElementById('start'),endScreen=document.getElementById('end');
-const hud=document.getElementById('hud'),scoreText=document.getElementById('score'),timeText=document.getElementById('time');
-const soundButton=document.getElementById('sound'),reduced=matchMedia('(prefers-reduced-motion: reduce)');
+const hud=document.getElementById('hud'),scoreText=document.getElementById('score'),timeText=document.getElementById('time'),powerText=document.getElementById('power-progress');
+const soundButton=document.getElementById('sound'),notice=document.getElementById('notice'),reduced=matchMedia('(prefers-reduced-motion: reduce)');
 let game=createGame(innerWidth,innerHeight),mode='start',dpr=1,last=0,audio=null,muted=false;
-let particles=[],flash=0,shake=0,pointer=null,longPress=0,lastScore=null,lastTime=null;
+let particles=[],flash=0,shake=0,pulse=0,pulseColor=0,pointer=null,longPress=0,noticeTimer=0,lastScore=null,lastTime=null,lastEarned=null;
 function resize(){
  const oldW=game.w,oldH=game.h;
  game.w=innerWidth;game.h=innerHeight;
@@ -179,8 +191,9 @@ soundButton.addEventListener('click',()=>{
 });
 function feedback(events){
  for(const e of events){
-  tone(e.type);
-  if(e.type==='gain')flash=.25;
+  tone(e.type==='power'?'gain':e.type);
+  if(e.type==='gain'||e.type==='power')flash=.25;
+  if(e.type==='power'){pulse=1;pulseColor=e.color}
   if(e.type==='loss'&&!reduced.matches)shake=.22;
   if(e.type==='remove'){
    const count=reduced.matches?4:12;
@@ -199,7 +212,8 @@ function clearPointer(){
 }
 function begin(){
  unlockAudio();clearPointer();game=createGame(innerWidth,innerHeight);
- particles=[];flash=shake=0;mode='play';last=performance.now();lastScore=lastTime=null;
+ clearTimeout(noticeTimer);notice.hidden=true;
+ particles=[];flash=shake=pulse=0;mode='play';last=performance.now();lastScore=lastTime=lastEarned=null;
  startScreen.hidden=true;endScreen.hidden=true;hud.hidden=false;
  document.body.classList.add('playing');
  document.getElementById('guide').hidden=false;
@@ -216,11 +230,17 @@ function hit(x,y,touch){
  let best=null,nearest=touch?25:18;
  for(const f of game.figures){
   const d=Math.hypot(x-f.x,y-f.y);
-  if(f.color!==game.color&&d<=nearest){best=f;nearest=d}
+  if(d<=nearest){best=f;nearest=d}
  }
  return best;
 }
 function tryRemove(id){
+ const f=game.figures.find(f=>f.id===id);
+ if(f&&f.color===game.color){
+  notice.textContent='No puedes eliminar tu color';notice.hidden=false;
+  clearTimeout(noticeTimer);noticeTimer=setTimeout(()=>{notice.hidden=true},900);
+  return false;
+ }
  if(eliminate(game,id)){feedback(game.events);return true}
  return false;
 }
@@ -232,9 +252,9 @@ canvas.addEventListener('pointerdown',e=>{
  const f=hit(e.clientX,e.clientY,e.pointerType==='touch');
  if(!f)return;
  if(e.button===2){tryRemove(f.id);return}
- if(e.button!==0)return;
+ if(e.button!==0||(f.color===game.color&&e.pointerType!=='touch'))return;
  pointer={id:e.pointerId,x:e.clientX,y:e.clientY,figure:f.id};
- game.drag={id:f.id,x:e.clientX,y:e.clientY};f.impulse=0;
+ if(f.color!==game.color){game.drag={id:f.id,x:e.clientX,y:e.clientY};f.impulse=0}
  canvas.setPointerCapture(e.pointerId);
  if(e.pointerType==='touch'){
   longPress=setTimeout(()=>{
@@ -311,6 +331,12 @@ function draw(dt){
   shape(f.x,f.y,R,f.shape,COLORS[f.color],f.color===game.color);
   if(game.drag&&game.drag.id===f.id){ctx.beginPath();ctx.arc(f.x,f.y,R+6,0,Math.PI*2);ctx.strokeStyle=COLORS[f.color];ctx.stroke()}
  }
+ if(pulse>0){
+  ctx.strokeStyle=COLORS[pulseColor];ctx.globalAlpha=pulse;ctx.lineWidth=2;
+  if(!reduced.matches){ctx.beginPath();ctx.arc(p.x,p.y,PLAYER_R+(1-pulse)*Math.hypot(game.w,game.h)/2,0,Math.PI*2);ctx.stroke()}
+  ctx.globalAlpha=1;ctx.fillStyle='#242a35';ctx.font='bold 13px Arial';ctx.textAlign='center';ctx.fillText('¡Pulso de color!',p.x,p.y+83);
+  ctx.globalAlpha=1;
+ }
  player(p.x,p.y,game.cooldown,false);
  for(const particle of particles){
   particle.life-=dt;particle.x+=particle.vx*dt;particle.y+=particle.vy*dt;
@@ -319,13 +345,14 @@ function draw(dt){
  }
  ctx.globalAlpha=1;particles=particles.filter(particle=>particle.life>0);
  ctx.restore();
- flash=Math.max(0,flash-dt);shake=Math.max(0,shake-dt);
+ flash=Math.max(0,flash-dt);shake=Math.max(0,shake-dt);pulse=Math.max(0,pulse-dt);
 }
 function frame(now){
  const dt=Math.max(0,Math.min(.05,(now-last)/1000));last=now;
  if(mode==='play'){
   update(game,dt);feedback(game.events);
   if(game.score!==lastScore){scoreText.textContent=game.score;lastScore=game.score}
+  if(game.earned!==lastEarned){powerText.textContent=game.earned%10+'/10';lastEarned=game.earned}
   const seconds=Math.ceil(game.time);
   if(seconds!==lastTime){
    timeText.textContent=Math.floor(seconds/60)+':'+String(seconds%60).padStart(2,'0');
@@ -348,9 +375,11 @@ if(new URLSearchParams(location.search).get('test')==='1'){
  s=createGame(1000,1000);s.figures=[figure(1,500,500,1)];collisions(s);
  check(s.score===-2&&s.figures.length===0,'Tocar al jugador resta 2 y elimina la enemiga');
  s=createGame(1000,1000);s.figures=[figure(1,100,100,1),figure(2,200,100,2)];
- check(eliminate(s,1)&&s.cooldown===1.5,'La eliminación inicia un enfriamiento global de 1,5 s');
+ check(eliminate(s,1)&&s.cooldown===1,'La eliminación inicia un enfriamiento global de 1 s');
  check(!eliminate(s,2)&&s.figures.length===1,'El enfriamiento bloquea toda eliminación');
- for(let i=0;i<30;i++)update(s,.05,()=>.5);
+ for(let i=0;i<19;i++)update(s,.05,()=>.5);
+ check(!eliminate(s,2),'La eliminación sigue bloqueada antes de completar 1 s');
+ update(s,.05,()=>.5);
  check(eliminate(s,2),'Se puede eliminar al terminar el enfriamiento');
  s=createGame(1000,1000);
  let seed=12345;
@@ -368,6 +397,30 @@ if(new URLSearchParams(location.search).get('test')==='1'){
  check(Math.abs(s.figures[0].x-120)<1e-8,'El arrastre se limita a 400 px/s');
  release(s);for(let i=0;i<6;i++)update(s,.05);
  check(s.figures[0].impulse<1e-8,'El impulso se frena en 0,3 s');
+ s=createGame(1000,1000);const early=spawn(s,()=>.7);
+ s=createGame(1000,1000);s.time=45;const middle=spawn(s,()=>.7);
+ s=createGame(1000,1000);s.time=0;const late=spawn(s,()=>.5);
+ check(early.color===0&&middle.color!==0&&late.color!==0,'La proporción enemiga crece del 20 % al 55 % durante los 90 s');
+ s=createGame(1000,1000);s.earned=8;s.score=4;
+ s.figures=[figure(1,500,500,0),figure(2,100,100,0)];collisions(s);
+ check(s.earned===9&&s.score===5&&s.figures.length===1,'No hay pulso antes de ganar 10 puntos');
+ s.figures.push(figure(3,500,500,1));collisions(s);
+ check(s.earned===9&&s.score===3,'Las penalizaciones no descargan el potenciador');
+ s.figures.push(figure(4,500,500,0),figure(5,800,800,1),figure(6,800,100,2),figure(7,850,800,1));s.cooldown=.5;s.drag={id:5,x:800,y:800};collisions(s);
+ check(s.earned===10&&s.score===4&&s.figures.length===2&&s.figures.every(f=>f.color!==1),'El décimo punto elimina un color enemigo sin sumar puntos extra');
+ check(s.figures.some(f=>f.color===0)&&s.figures.some(f=>f.color===2)&&!s.drag,'El pulso conserva aliadas y otros colores y libera la figura arrastrada');
+ check(s.events.filter(e=>e.type==='power').length===1&&s.cooldown===.5,'El pulso se activa una vez y no depende del cooldown de ataque');
+ s.events=[];collisions(s);
+ check(!s.events.length&&s.figures.length===2,'El pulso no se repite mientras no se alcance otro múltiplo de 10');
+ s.earned=19;s.figures.push(figure(8,500,500,0));collisions(s);
+ check(s.earned===20&&s.figures.length===1&&s.events.some(e=>e.type==='power'),'El potenciador se vuelve a activar al ganar 20 puntos');
+ s=createGame(1000,1000);s.color=2;s.earned=9;
+ s.figures=[figure(1,500,500,2),figure(2,100,100,2),figure(3,800,800,0)];collisions(s);
+ check(s.figures.length===1&&s.figures[0].color===2,'El barrido protege el color del jugador aunque no sea azul');
+ check(!power(s,2)&&s.figures.length===1&&!eliminate(s,2),'Ni el ataque normal ni el potenciador pueden eliminar el color del jugador');
+ s.events=[];check(!power(s)&&!s.events.length,'Sin enemigas no hay objetivos para el potenciador');
+ s=createGame(1000,1000);
+ check(s.earned===0&&s.score===0,'Una partida nueva reinicia puntaje y carga del potenciador');
  console.info('Imán de color: '+checks+' autopruebas correctas.');
 }
 </script>
