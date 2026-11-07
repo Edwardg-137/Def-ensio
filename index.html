@@ -4,20 +4,20 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#f5f3eb">
-<meta name="description" content="Atrae tu color. Aparta los demás. Un pequeño juego de reflejos de 90 segundos.">
 <title>Imán de color</title>
 <style>
 :root{color-scheme:light;--paper:#f5f3eb;--ink:#242a35;--muted:#62675f;--blue:#355ce0;--line:#d7d9cd}
 *{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden}body{background:var(--paper);color:var(--ink);font-family:Arial,Helvetica,sans-serif;-webkit-tap-highlight-color:transparent;overscroll-behavior:none}button{font:inherit;color:inherit;touch-action:manipulation}button:focus-visible{outline:3px solid var(--blue);outline-offset:5px}::selection{background:#dbe2ff}canvas{display:block;width:100%;height:100%;touch-action:none;cursor:crosshair;position:fixed;inset:0}
 .top{position:fixed;top:max(24px,env(safe-area-inset-top));left:max(32px,env(safe-area-inset-left));right:max(32px,env(safe-area-inset-right));display:flex;justify-content:space-between;align-items:center;pointer-events:none;z-index:2}.brand{display:flex;align-items:center;gap:10px;font-weight:750;font-size:15px;letter-spacing:-.4px}.brand svg{width:24px;height:24px}.tools{display:flex;gap:18px;align-items:center}.round{font-size:11px;letter-spacing:1.3px;color:var(--muted)}.sound{pointer-events:auto;display:grid;place-items:center;width:44px;height:44px;border:1px solid var(--line);border-radius:50%;background:var(--paper);cursor:pointer}.sound svg{width:19px;height:19px}.sound:hover{background:#e7e9dc}.sound .slash{display:none}.sound[aria-pressed="true"] .slash{display:block}
 .screen{position:fixed;inset:0;z-index:1;pointer-events:none;display:flex;align-items:center;padding:100px 8vw 130px}.intro{width:46%;max-width:580px}h1{font-size:clamp(64px,8.2vw,118px);line-height:.91;letter-spacing:-.04em;margin:0 0 28px;font-weight:800}h1 span{color:var(--blue)}.lead{font-size:18px;line-height:1.55;max-width:320px;margin:0 0 32px;color:var(--muted)}.play{pointer-events:auto;border:0;background:var(--ink);color:var(--paper);border-radius:7px;padding:18px 23px;min-height:56px;display:inline-flex;gap:34px;align-items:center;cursor:pointer;font-size:15px;font-weight:700}.play:hover{background:var(--blue)}.play svg{width:20px;height:20px}.detail{font-size:12px;color:var(--muted);margin-top:15px}.intro .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--blue);margin-right:7px}.board-label{position:absolute;left:72%;bottom:22%;transform:translateX(-50%);white-space:nowrap;font-size:12px;color:var(--muted)}.board-label b{color:var(--blue)}
-.guide{position:fixed;bottom:max(30px,env(safe-area-inset-bottom));left:8vw;right:8vw;z-index:2;pointer-events:none;display:flex;gap:48px;padding-top:21px;border-top:1px solid var(--line)}.instruction{display:flex;gap:12px;align-items:flex-start;font-size:12px;line-height:1.6;color:var(--muted)}.instruction svg{width:23px;height:23px;flex-shrink:0;color:var(--ink);margin-top:2px}.instruction b{display:block;font-weight:700;color:var(--ink);font-size:13px}.touch-copy{display:none}.legend{margin-left:auto;display:flex;align-items:center;gap:8px;white-space:nowrap;font-size:11px;color:var(--muted)}.swatch{width:9px;height:9px;display:inline-block;border-radius:50%;background:var(--blue)}.swatch.enemy{background:#d85843;margin-left:12px}
-.hud{position:fixed;top:92px;left:50%;transform:translateX(-50%);z-index:2;pointer-events:none;display:flex;align-items:center;gap:32px}.stat{min-width:85px;text-align:center}.stat label{display:block;font-size:11px;letter-spacing:1px;color:var(--muted);margin-bottom:4px}.stat strong{font-size:34px;font-weight:500;letter-spacing:-1.5px;font-variant-numeric:tabular-nums}.divider{width:1px;height:36px;background:var(--line)}.hud .urgent{color:#bd3e2d}.power{position:absolute;top:78px;left:50%;transform:translateX(-50%);white-space:nowrap;font-size:12px;color:var(--blue)}.playing .guide{justify-content:center;gap:26px;border:0;padding:0;bottom:max(22px,env(safe-area-inset-bottom))}.playing .instruction{font-size:11px}.playing .instruction b{display:inline;font-size:11px;margin-right:5px}.playing .instruction svg{width:17px;height:17px;margin-top:0}.playing .legend{display:none}.playing .instruction:first-child{display:none}.playing .round{display:none}.end-title{font-size:clamp(40px,5vw,64px);letter-spacing:-.04em;line-height:1;margin:0 0 18px}.result{font-size:clamp(88px,12vw,150px);letter-spacing:-.04em;line-height:1;color:var(--blue);font-weight:750;margin:0}.result-label{font-size:15px;color:var(--muted);margin:8px 0 30px}.end .lead{font-size:16px;margin-bottom:25px} [hidden]{display:none!important}
+.guide{position:fixed;bottom:max(30px,env(safe-area-inset-bottom));left:8vw;right:8vw;z-index:2;pointer-events:none;display:flex;gap:48px;padding-top:21px;border-top:1px solid var(--line)}.instruction{display:flex;gap:12px;align-items:flex-start;font-size:12px;line-height:1.6;color:var(--muted)}.instruction b{display:block;font-weight:700;color:var(--ink);font-size:13px}.touch-copy{display:none}
+.hud{position:fixed;top:92px;left:50%;transform:translateX(-50%);z-index:2;pointer-events:none;display:flex;align-items:center;gap:32px}.stat{min-width:85px;text-align:center}.stat label{display:block;font-size:11px;letter-spacing:1px;color:var(--muted);margin-bottom:4px}.stat strong{font-size:34px;font-weight:500;letter-spacing:-1.5px;font-variant-numeric:tabular-nums}.divider{width:1px;height:36px;background:var(--line)}.hud .urgent{color:#bd3e2d}.playing .guide{display:none}.playing .round{display:none}.end-title{font-size:clamp(40px,5vw,64px);letter-spacing:-.04em;line-height:1;margin:0 0 18px}.result{font-size:clamp(88px,12vw,150px);letter-spacing:-.04em;line-height:1;color:var(--blue);font-weight:750;margin:0}.result-label{font-size:15px;color:var(--muted);margin:8px 0 30px}.end .lead{font-size:16px;margin-bottom:25px} [hidden]{display:none!important}
 @media(pointer:coarse){.mouse-copy{display:none}.touch-copy{display:inline}}
-@media(max-width:650px){.top{top:max(15px,env(safe-area-inset-top));left:21px;right:18px}.brand{font-size:14px}.round{display:none}.screen{align-items:flex-start;padding:105px 26px 0}.intro{width:100%;max-width:none}h1{font-size:clamp(57px,14vw,80px);line-height:.93;margin:0 0 15px}h1 br{display:none}.lead{font-size:15px;max-width:275px;line-height:1.45;margin-bottom:20px}.play{min-height:50px;padding:14px 19px;font-size:14px;gap:30px}.detail{font-size:11px;margin-top:10px}.board-label{left:50%;bottom:26%;font-size:11px}.guide{left:25px;right:25px;bottom:max(20px,env(safe-area-inset-bottom));gap:16px;flex-wrap:wrap;padding-top:15px}.instruction{font-size:11px;gap:9px;flex:1;min-width:130px}.instruction b{font-size:12px}.instruction:first-child{flex-basis:100%;min-width:100%}.instruction:first-child b{display:inline;margin-right:5px}.instruction:first-child svg{width:18px;height:18px;margin-top:0}.legend{display:none}.hud{top:82px;gap:27px}.stat strong{font-size:30px}.playing .guide{flex-wrap:nowrap;gap:10px;left:15px;right:15px}.playing .instruction{font-size:11px;min-width:0;flex:initial}.playing .instruction b{font-size:10px}.playing .instruction svg{display:none}.end .intro{padding-top:30px}.end-title{font-size:43px}.result{font-size:100px}.end .board-label{bottom:25%}}
+@media(max-width:650px){.top{top:max(15px,env(safe-area-inset-top));left:21px;right:18px}.brand{font-size:14px}.round{display:none}.screen{align-items:flex-start;padding:105px 26px 0}.intro{width:100%;max-width:none}h1{font-size:clamp(57px,14vw,80px);line-height:.93;margin:0 0 15px}h1 br{display:none}.lead{font-size:15px;max-width:275px;line-height:1.45;margin-bottom:20px}.play{min-height:50px;padding:14px 19px;font-size:14px;gap:30px}.detail{font-size:11px;margin-top:10px}.board-label{left:50%;bottom:26%;font-size:11px}.guide{left:25px;right:25px;bottom:max(20px,env(safe-area-inset-bottom));gap:16px;flex-wrap:wrap;padding-top:15px}.instruction{font-size:11px;gap:9px;flex:1;min-width:130px}.instruction b{font-size:12px}.instruction:first-child{flex-basis:100%;min-width:100%}.instruction:first-child b{display:inline;margin-right:5px}.hud{top:82px;gap:27px}.stat strong{font-size:30px}.end .intro{padding-top:30px}.end-title{font-size:43px}.result{font-size:100px}.end .board-label{bottom:25%}}
 @media(max-height:580px) and (min-width:651px){h1 br{display:none}h1{font-size:clamp(36px,5.2vw,65px)!important}.detail,.board-label{display:none}.screen{padding-top:80px;padding-bottom:105px}h1{font-size:70px;margin-bottom:16px}.lead{font-size:15px;margin-bottom:20px}.guide{bottom:18px;padding-top:12px}.board-label{bottom:24%}.hud{top:70px}}
 @media(max-height:700px) and (max-width:650px){.board-label{display:none}.screen{padding-top:84px}h1{font-size:54px}.lead{font-size:13px;margin-bottom:12px}.detail{display:none}.guide{bottom:12px;gap:9px;padding-top:10px}.board-label{bottom:25%}.instruction{line-height:1.4}.end .intro{padding-top:0}.end-title{font-size:34px}.result{font-size:72px}.result-label{margin-bottom:16px}.end .lead{font-size:13px;margin-bottom:16px}}
-.notice{position:fixed;bottom:max(88px,env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);z-index:3;max-width:calc(100% - 40px);width:max-content;padding:11px 16px;border-radius:6px;background:var(--ink);color:var(--paper);font-size:13px;pointer-events:none}
+.notice{position:fixed;bottom:max(165px,env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);z-index:3;max-width:calc(100% - 40px);width:max-content;padding:11px 16px;border-radius:6px;background:var(--ink);color:var(--paper);font-size:13px;pointer-events:none}
+.shop{position:fixed;bottom:max(18px,env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);width:min(560px,calc(100% - 28px));z-index:2}.shop p{margin:0 0 9px;font-size:12px;color:var(--muted)}.shop>div{display:flex;gap:8px}.shop button{flex:1;min-width:0;min-height:94px;border:1px solid var(--line);border-radius:7px;background:var(--paper);padding:10px 6px;cursor:pointer}.shop b,.shop span,.shop small{display:block}.shop b{font-size:13px}.shop span{font-size:14px;font-weight:700;margin:5px 0;color:var(--blue)}.shop small{font-size:11px;color:var(--muted)}.shop button:disabled{color:var(--muted);cursor:default}.shop button:disabled span{color:var(--muted)}.shop button:not(:disabled):hover{border-color:var(--blue);background:#e7ebfa}
 </style>
 </head>
 <body>
@@ -34,23 +34,29 @@
  <div class="intro"><h2 id="end-title" class="end-title">Tiempo cumplido.</h2><p id="result" class="result">0</p><p class="result-label">puntos en 90 segundos</p><p class="lead">Un poco de atracción.<br>Otro poco de estrategia.</p><button class="play" id="retry">Volver a jugar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></button></div>
  <div class="board-label">Cada color cambia la partida.</div>
 </section>
-<div class="hud" id="hud" hidden><div class="stat"><label>PUNTOS</label><strong id="score">0</strong></div><div class="divider"></div><div class="stat"><label>TIEMPO</label><strong id="time">1:30</strong></div><div class="power" title="Cada 10 puntos ganados elimina todas las figuras de un mismo color enemigo.">Pulso de color · <span id="power-progress">0/10</span></div></div>
+<div class="hud" id="hud" hidden><div class="stat"><label>PUNTOS</label><strong id="score">0</strong></div><div class="divider"></div><div class="stat"><label>TIEMPO</label><strong id="time">1:30</strong></div></div>
+<section id="shop" class="shop" aria-label="Tienda" hidden>
+ <p>Tienda · compras sin pausa</p><div>
+ <button disabled title="Elimina el color de la primera enemiga presente."><b>Barrido</b><span>10 puntos</span><small>Un color enemigo</small></button>
+ <button disabled title="Cada enemiga recibe un impulso desde la aliada más cercana."><b>Repulsión</b><span>15 puntos</span><small>Un pulso de tus aliadas</small></button>
+ <button disabled><b>Stickman</b><span>25 puntos</span><small id="helper-status">180 px/s · 30 s</small></button>
+ </div>
+</section>
 <footer class="guide" id="guide">
- <div class="instruction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M8 12h8m-4-4v8"/></svg><div><b>Tu color suma +1.</b> Los demás restan −2 y convierten aliadas. Cada 10 puntos ganados limpias un color enemigo.</div></div>
- <div class="instruction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m6 3 12 9-6 1-3 6zM17 19h5m-2.5-2.5v5"/></svg><div><b>Arrastra para apartar.</b><span class="mouse-copy"> Clic izquierdo.</span><span class="touch-copy"> Mantén y mueve.</span></div></div>
- <div class="instruction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="m9 9 6 6m0-6-6 6"/></svg><div><b>Elimina cada 1 s.</b><span class="mouse-copy"> Clic derecho.</span><span class="touch-copy"> Pulsa 0,4 s sin mover.</span></div></div>
- <div class="legend"><i class="swatch"></i> Aliadas <i class="swatch enemy"></i> Enemigas</div>
+ <div class="instruction"><div><b>Tu color suma +1.</b> Los demás restan −2 y convierten aliadas. Gasta puntos en la tienda durante la partida.</div></div>
+ <div class="instruction"><div><b>Arrastra para apartar.</b><span class="mouse-copy"> Clic izquierdo.</span><span class="touch-copy"> Mantén y mueve.</span></div></div>
+ <div class="instruction"><div><b>Elimina cada 1 s.</b><span class="mouse-copy"> Clic derecho.</span><span class="touch-copy"> Pulsa 0,4 s sin mover.</span></div></div>
 </footer>
 <div id="notice" class="notice" role="status" hidden></div>
 <noscript>Activa JavaScript para jugar a Imán de color.</noscript>
 <script>
 'use strict';
 const COLORS=['#355ce0','#d85843','#aa760b','#268570'];
-const R=14, PLAYER_R=23, COOLDOWN=1, DURATION=90;
+const R=14, PLAYER_R=23, COOLDOWN=1, DURATION=90, COSTS=[10,15,25];
 
 // La simulación solo recibe estado, tiempo y azar; no lee el DOM.
 function createGame(w,h){
- return {w,h,color:0,figures:[],nextId:1,score:0,earned:0,time:DURATION,spawnClock:0,cooldown:0,drag:null,events:[]};
+ return {w,h,color:0,figures:[],nextId:1,score:0,time:DURATION,spawnClock:0,cooldown:0,drag:null,helper:null,events:[]};
 }
 function distance(a,b){return Math.hypot(a.x-b.x,a.y-b.y)}
 function center(s){return {x:s.w/2,y:s.h/2}}
@@ -90,19 +96,52 @@ function power(s,color=s.figures.find(f=>f.color!==s.color)?.color){
  s.events.push({type:'power',color});
  return true;
 }
+function buy(s,item){
+ const cost=COSTS[item],allies=s.figures.filter(f=>f.color===s.color),enemies=s.figures.filter(f=>f.color!==s.color);
+ if(!cost||s.time<=0||s.score<cost)return false;
+ if(item===0){if(!power(s))return false}
+ if(item===1){
+  if(!allies.length||!enemies.length)return false;
+  for(const f of enemies){
+   const a=allies.reduce((a,b)=>distance(f,a)<=distance(f,b)?a:b);
+   const dx=f.x-a.x,dy=f.y-a.y,d=Math.hypot(dx,dy);
+   f.vx=d?dx/d*400:400;f.vy=d?dy/d*400:0;f.impulse=.3;
+  }
+  s.drag=null;
+  s.events.push({type:'power',color:s.color,origins:allies.map(a=>({x:a.x,y:a.y})),label:'¡Repulsión!'});
+ }
+ if(item===2){
+  if(s.helper)return false;
+  s.helper={...center(s),life:30};
+  s.events.push({type:'power',color:s.color,label:'Stickman · 30 s'});
+ }
+ s.score-=cost;return true;
+}
+function updateHelper(s,dt){
+ const h=s.helper;if(!h)return;
+ const t=Math.min(dt,h.life),enemies=s.figures.filter(f=>f.color!==s.color);
+ h.life=Math.max(0,h.life-dt);
+ if(enemies.length){
+  const f=enemies.reduce((a,b)=>distance(h,a)<=distance(h,b)?a:b),d=distance(h,f),step=Math.min(d,180*t);
+  if(d){h.x+=(f.x-h.x)/d*step;h.y+=(f.y-h.y)/d*step}
+  s.figures=s.figures.filter(f=>{
+   if(f.color===s.color||distance(h,f)>R+10)return true;
+   s.events.push({type:'remove',x:f.x,y:f.y,color:f.color});return false;
+  });
+ }
+ if(h.life<1e-8)s.helper=null;
+}
 function collisions(s){
- const p=center(s),removed=new Set(),earnedBefore=s.earned;
+ const p=center(s),removed=new Set();
  for(const f of s.figures){
   if(distance(f,p)<=PLAYER_R+R){
    const allied=f.color===s.color;
    s.score+=allied?1:-2;
-   if(allied)s.earned++;
    s.events.push({type:allied?'gain':'loss',x:f.x,y:f.y,color:f.color});
    removed.add(f.id);
   }
  }
  s.figures=s.figures.filter(f=>!removed.has(f.id));
- if(Math.floor(s.earned/10)>Math.floor(earnedBefore/10))power(s);
  for(const enemy of s.figures){
   if(enemy.color===s.color)continue;
   for(const ally of s.figures){
@@ -149,19 +188,21 @@ function update(s,dt,random=Math.random){
   f.x=Math.max(Math.min(R,s.w/2),Math.min(s.w-Math.min(R,s.w/2),f.x));
   f.y=Math.max(Math.min(R,s.h/2),Math.min(s.h-Math.min(R,s.h/2),f.y));
  }
- collisions(s);
+ updateHelper(s,dt);collisions(s);
 }
 
 const canvas=document.getElementById('field'),ctx=canvas.getContext('2d');
 const startScreen=document.getElementById('start'),endScreen=document.getElementById('end');
-const hud=document.getElementById('hud'),scoreText=document.getElementById('score'),timeText=document.getElementById('time'),powerText=document.getElementById('power-progress');
+const hud=document.getElementById('hud'),scoreText=document.getElementById('score'),timeText=document.getElementById('time');
+const shop=document.getElementById('shop'),shopButtons=shop.querySelectorAll('button'),helperStatus=document.getElementById('helper-status');
 const soundButton=document.getElementById('sound'),notice=document.getElementById('notice'),reduced=matchMedia('(prefers-reduced-motion: reduce)');
 let game=createGame(innerWidth,innerHeight),mode='start',dpr=1,last=0,audio=null,muted=false;
-let particles=[],flash=0,shake=0,pulse=0,pulseColor=0,pointer=null,longPress=0,noticeTimer=0,lastScore=null,lastTime=null,lastEarned=null;
+let particles=[],flash=0,shake=0,pulse=0,pulseColor=0,pulseOrigins=null,pulseLabel='',pointer=null,longPress=0,noticeTimer=0,lastScore=null,lastTime=null;
 function resize(){
  const oldW=game.w,oldH=game.h;
  game.w=innerWidth;game.h=innerHeight;
  for(const f of game.figures){f.x=f.x/oldW*game.w;f.y=f.y/oldH*game.h}
+ if(game.helper){game.helper.x*=game.w/oldW;game.helper.y*=game.h/oldH}
  if(game.drag){game.drag.x=game.drag.x/oldW*game.w;game.drag.y=game.drag.y/oldH*game.h}
  dpr=Math.min(devicePixelRatio||1,2);
  canvas.width=Math.round(game.w*dpr);canvas.height=Math.round(game.h*dpr);
@@ -193,7 +234,7 @@ function feedback(events){
  for(const e of events){
   tone(e.type==='power'?'gain':e.type);
   if(e.type==='gain'||e.type==='power')flash=.25;
-  if(e.type==='power'){pulse=1;pulseColor=e.color}
+  if(e.type==='power'){pulse=1;pulseColor=e.color;pulseOrigins=e.origins;pulseLabel=e.label||'¡Barrido de color!'}
   if(e.type==='loss'&&!reduced.matches)shake=.22;
   if(e.type==='remove'){
    const count=reduced.matches?4:12;
@@ -213,19 +254,27 @@ function clearPointer(){
 function begin(){
  unlockAudio();clearPointer();game=createGame(innerWidth,innerHeight);
  clearTimeout(noticeTimer);notice.hidden=true;
- particles=[];flash=shake=pulse=0;mode='play';last=performance.now();lastScore=lastTime=lastEarned=null;
- startScreen.hidden=true;endScreen.hidden=true;hud.hidden=false;
+ particles=[];flash=shake=pulse=0;mode='play';last=performance.now();lastScore=lastTime=null;
+ startScreen.hidden=true;endScreen.hidden=true;hud.hidden=shop.hidden=false;updateShop();
  document.body.classList.add('playing');
  document.getElementById('guide').hidden=false;
 }
 function finish(){
- mode='end';release(game);clearPointer();hud.hidden=true;endScreen.hidden=false;
+ mode='end';release(game);clearPointer();hud.hidden=shop.hidden=true;endScreen.hidden=false;
  document.body.classList.remove('playing');document.getElementById('guide').hidden=true;
  document.getElementById('result').textContent=game.score;
  document.getElementById('retry').focus({preventScroll:true});
 }
 document.getElementById('play').addEventListener('click',begin);
 document.getElementById('retry').addEventListener('click',begin);
+function updateShop(){
+ const enemy=game.figures.some(f=>f.color!==game.color),ally=game.figures.some(f=>f.color===game.color);
+ shopButtons.forEach((b,i)=>{b.disabled=game.score<COSTS[i]||game.time<=0||(i===0&&!enemy)||(i===1&&(!enemy||!ally))||(i===2&&!!game.helper)});
+ helperStatus.textContent=game.helper?'Activo · '+Math.ceil(game.helper.life)+' s':'180 px/s · 30 s';
+}
+shopButtons.forEach((b,i)=>b.addEventListener('click',()=>{
+ if(mode==='play'&&buy(game,i)){if(!game.drag)clearPointer();feedback(game.events);updateShop()}
+}));
 function hit(x,y,touch){
  let best=null,nearest=touch?25:18;
  for(const f of game.figures){
@@ -333,11 +382,17 @@ function draw(dt){
  }
  if(pulse>0){
   ctx.strokeStyle=COLORS[pulseColor];ctx.globalAlpha=pulse;ctx.lineWidth=2;
-  if(!reduced.matches){ctx.beginPath();ctx.arc(p.x,p.y,PLAYER_R+(1-pulse)*Math.hypot(game.w,game.h)/2,0,Math.PI*2);ctx.stroke()}
-  ctx.globalAlpha=1;ctx.fillStyle='#242a35';ctx.font='bold 13px Arial';ctx.textAlign='center';ctx.fillText('¡Pulso de color!',p.x,p.y+83);
+  if(!reduced.matches)for(const origin of pulseOrigins||[p]){ctx.beginPath();ctx.arc(origin.x,origin.y,R+(1-pulse)*(pulseOrigins?90:Math.hypot(game.w,game.h)/2),0,Math.PI*2);ctx.stroke()}
+  ctx.globalAlpha=1;ctx.fillStyle='#242a35';ctx.font='bold 13px Arial';ctx.textAlign='center';ctx.fillText(pulseLabel,p.x,p.y-54);
   ctx.globalAlpha=1;
  }
  player(p.x,p.y,game.cooldown,false);
+ if(game.helper){
+  const {x,y}=game.helper;
+  ctx.strokeStyle='#242a35';ctx.lineWidth=2;ctx.beginPath();ctx.arc(x,y-12,5,0,Math.PI*2);
+  ctx.moveTo(x,y-7);ctx.lineTo(x,y+5);ctx.lineTo(x-7,y+16);ctx.moveTo(x,y+5);ctx.lineTo(x+7,y+16);
+  ctx.moveTo(x-9,y+1);ctx.lineTo(x,y-4);ctx.lineTo(x+9,y+1);ctx.stroke();
+ }
  for(const particle of particles){
   particle.life-=dt;particle.x+=particle.vx*dt;particle.y+=particle.vy*dt;
   ctx.globalAlpha=Math.max(0,particle.life/.4);ctx.fillStyle=particle.color;
@@ -352,7 +407,7 @@ function frame(now){
  if(mode==='play'){
   update(game,dt);feedback(game.events);
   if(game.score!==lastScore){scoreText.textContent=game.score;lastScore=game.score}
-  if(game.earned!==lastEarned){powerText.textContent=game.earned%10+'/10';lastEarned=game.earned}
+  updateShop();
   const seconds=Math.ceil(game.time);
   if(seconds!==lastTime){
    timeText.textContent=Math.floor(seconds/60)+':'+String(seconds%60).padStart(2,'0');
@@ -366,61 +421,64 @@ requestAnimationFrame(frame);
 
 // Autoprueba aislada: index.html?test=1. No altera la partida visible.
 if(new URLSearchParams(location.search).get('test')==='1'){
- let checks=0;
+ let checks=0;const testGame=()=>createGame(1000,1000);
  function check(condition,message){console.assert(condition,message);checks++;if(!condition)throw new Error(message)}
  function figure(id,x,y,color){return {id,x,y,color,shape:0,vx:0,vy:0,impulse:0}}
- let s=createGame(1000,1000),ally=figure(1,100,100,0),enemy=figure(2,126,100,2);
+ let s=testGame(),ally=figure(1,100,100,0),enemy=figure(2,126,100,2);
  s.figures=[ally,enemy];collisions(s);
- check(ally.color===2&&s.figures.length===2,'La enemiga convierte la aliada y conserva ambas figuras');
- s=createGame(1000,1000);s.figures=[figure(1,500,500,1)];collisions(s);
- check(s.score===-2&&s.figures.length===0,'Tocar al jugador resta 2 y elimina la enemiga');
- s=createGame(1000,1000);s.figures=[figure(1,100,100,1),figure(2,200,100,2)];
- check(eliminate(s,1)&&s.cooldown===1,'La eliminación inicia un enfriamiento global de 1 s');
- check(!eliminate(s,2)&&s.figures.length===1,'El enfriamiento bloquea toda eliminación');
+ check(ally.color===2&&s.figures.length===2,'Conversión sin eliminar figuras');
+ s=testGame();s.figures=[figure(1,500,500,1)];collisions(s);
+ check(s.score===-2&&s.figures.length===0,'Contacto enemigo: -2 y desaparece');
+ s=testGame();s.figures=[figure(1,100,100,1),figure(2,200,100,2)];
+ check(eliminate(s,1)&&s.cooldown===1,'Ataque: cooldown global de 1 s');
+ check(!eliminate(s,2)&&s.figures.length===1,'Cooldown bloquea ataques');
  for(let i=0;i<19;i++)update(s,.05,()=>.5);
- check(!eliminate(s,2),'La eliminación sigue bloqueada antes de completar 1 s');
+ check(!eliminate(s,2),'Bloqueado antes de 1 s');
  update(s,.05,()=>.5);
- check(eliminate(s,2),'Se puede eliminar al terminar el enfriamiento');
- s=createGame(1000,1000);
+ check(eliminate(s,2),'Ataque disponible tras 1 s');
+ s=testGame();
  let seed=12345;
  const random=()=>((seed=(Math.imul(seed,1664525)+1013904223)>>>0)/4294967296);
  for(let i=0;i<250;i++)spawn(s,random);
- check(s.figures.length>0&&s.figures.every(f=>distance(f,center(s))>=250),'Ninguna aparición invade el margen de 250 px');
- check(s.figures.every((a,i)=>s.figures.every((b,j)=>i===j||distance(a,b)>=28)),'Las apariciones respetan 28 px entre centros');
- s=createGame(1000,1000);s.figures=[figure(1,14,14,1)];let attempts=0;
- check(spawn(s,()=>{attempts++;return 0})===null&&attempts===20,'Se salta la aparición tras exactamente 10 posiciones fallidas');
+ check(s.figures.length>0&&s.figures.every(f=>distance(f,center(s))>=250),'Spawn: margen de 250 px');
+ check(s.figures.every((a,i)=>s.figures.every((b,j)=>i===j||distance(a,b)>=28)),'Spawn: separación de 28 px');
+ s=testGame();s.figures=[figure(1,14,14,1)];let attempts=0;
+ check(spawn(s,()=>{attempts++;return 0})===null&&attempts===20,'Spawn: máximo 10 intentos');
  s=createGame(320,480);const small=spawn(s,()=>0);
- check(small&&distance(small,center(s))>=112,'En móvil se usa min(250, 0,35 × lado menor)');
- s=createGame(1000,1000);const moving=figure(1,100,500,0);s.figures=[moving];update(s,1);
- check(Math.abs(moving.x-103)<1e-8,'dt se limita a 50 ms y las aliadas avanzan a 60 px/s');
- s=createGame(1000,1000);s.figures=[figure(1,100,100,1)];s.drag={id:1,x:900,y:100};update(s,.05);
- check(Math.abs(s.figures[0].x-120)<1e-8,'El arrastre se limita a 400 px/s');
+ check(small&&distance(small,center(s))>=112,'Spawn: margen móvil');
+ s=testGame();const moving=figure(1,100,500,0);s.figures=[moving];update(s,1);
+ check(Math.abs(moving.x-103)<1e-8,'dt máximo 50 ms; aliadas a 60 px/s');
+ s=testGame();s.figures=[figure(1,100,100,1)];s.drag={id:1,x:900,y:100};update(s,.05);
+ check(Math.abs(s.figures[0].x-120)<1e-8,'Arrastre a 400 px/s');
  release(s);for(let i=0;i<6;i++)update(s,.05);
- check(s.figures[0].impulse<1e-8,'El impulso se frena en 0,3 s');
- s=createGame(1000,1000);const early=spawn(s,()=>.7);
- s=createGame(1000,1000);s.time=45;const middle=spawn(s,()=>.7);
- s=createGame(1000,1000);s.time=0;const late=spawn(s,()=>.5);
- check(early.color===0&&middle.color!==0&&late.color!==0,'La proporción enemiga crece del 20 % al 55 % durante los 90 s');
- s=createGame(1000,1000);s.earned=8;s.score=4;
- s.figures=[figure(1,500,500,0),figure(2,100,100,0)];collisions(s);
- check(s.earned===9&&s.score===5&&s.figures.length===1,'No hay pulso antes de ganar 10 puntos');
- s.figures.push(figure(3,500,500,1));collisions(s);
- check(s.earned===9&&s.score===3,'Las penalizaciones no descargan el potenciador');
- s.figures.push(figure(4,500,500,0),figure(5,800,800,1),figure(6,800,100,2),figure(7,850,800,1));s.cooldown=.5;s.drag={id:5,x:800,y:800};collisions(s);
- check(s.earned===10&&s.score===4&&s.figures.length===2&&s.figures.every(f=>f.color!==1),'El décimo punto elimina un color enemigo sin sumar puntos extra');
- check(s.figures.some(f=>f.color===0)&&s.figures.some(f=>f.color===2)&&!s.drag,'El pulso conserva aliadas y otros colores y libera la figura arrastrada');
- check(s.events.filter(e=>e.type==='power').length===1&&s.cooldown===.5,'El pulso se activa una vez y no depende del cooldown de ataque');
- s.events=[];collisions(s);
- check(!s.events.length&&s.figures.length===2,'El pulso no se repite mientras no se alcance otro múltiplo de 10');
- s.earned=19;s.figures.push(figure(8,500,500,0));collisions(s);
- check(s.earned===20&&s.figures.length===1&&s.events.some(e=>e.type==='power'),'El potenciador se vuelve a activar al ganar 20 puntos');
- s=createGame(1000,1000);s.color=2;s.earned=9;
- s.figures=[figure(1,500,500,2),figure(2,100,100,2),figure(3,800,800,0)];collisions(s);
- check(s.figures.length===1&&s.figures[0].color===2,'El barrido protege el color del jugador aunque no sea azul');
- check(!power(s,2)&&s.figures.length===1&&!eliminate(s,2),'Ni el ataque normal ni el potenciador pueden eliminar el color del jugador');
- s.events=[];check(!power(s)&&!s.events.length,'Sin enemigas no hay objetivos para el potenciador');
- s=createGame(1000,1000);
- check(s.earned===0&&s.score===0,'Una partida nueva reinicia puntaje y carga del potenciador');
+ check(s.figures[0].impulse<1e-8,'Impulso de 0,3 s');
+ s=testGame();const early=spawn(s,()=>.7);
+ s=testGame();s.time=45;const middle=spawn(s,()=>.7);
+ s=testGame();s.time=0;const late=spawn(s,()=>.5);
+ check(early.color===0&&middle.color!==0&&late.color!==0,'Enemigas aumentan del 20 % al 55 %');
+ s=testGame();s.score=9;s.figures=[figure(1,500,500,0),figure(2,100,100,1)];collisions(s);
+ check(s.score===10&&s.figures.length===1&&!s.events.some(e=>e.type==='power'),'Sin activación automática');
+ s.score=9;const before=JSON.stringify(s);
+ check(!buy(s,0)&&JSON.stringify(s)===before,'Sin saldo no hay cobro ni efecto');
+ s.score=10;s.cooldown=.5;s.drag={id:2,x:100,y:100};s.figures.push(figure(3,150,100,1),figure(4,800,100,2),figure(5,100,800,0));
+ check(buy(s,0)&&s.score===0&&s.figures.length===2&&!s.drag&&s.cooldown===.5,'Barrido: 10 puntos, un color enemigo, sin cooldown');
+ check(s.figures.some(f=>f.color===0)&&s.figures.some(f=>f.color===2),'Conserva aliadas y otros colores');
+ s=testGame();s.score=100;
+ check(!buy(s,0)&&!buy(s,1)&&s.score===100,'Sin objetivos no se cobra');
+ s.figures=[figure(1,100,200,0),figure(2,150,200,1),figure(3,800,800,0),figure(4,800,750,2)];
+ check(buy(s,1)&&s.score===85&&s.figures[1].vx===400&&s.figures[3].vy===-400,'Repulsión: 15 puntos, desde la aliada más cercana');
+ check(s.figures[1].impulse===.3&&s.figures[0].impulse===0,'Un solo impulso; aliadas intactas');
+ s=testGame();s.score=50;s.figures=[figure(1,700,500,1),figure(2,100,100,0)];
+ check(buy(s,2)&&s.score===25&&s.helper.life===30,'Stickman: 25 puntos y 30 s');
+ check(!buy(s,2)&&s.score===25,'No se duplica el stickman activo');
+ updateHelper(s,.05);
+ check(Math.abs(s.helper.x-509)<1e-8,'Stickman a 180 px/s, más rápido que enemigas');
+ updateHelper(s,1);
+ check(s.figures.length===1&&s.figures[0].color===0&&s.score===25,'Stickman elimina solo enemigas, sin puntos extra');
+ updateHelper(s,s.helper.life-.05);check(!!s.helper,'Activo antes de 30 s');
+ updateHelper(s,.05);check(!s.helper&&buy(s,2),'Expira a los 30 s y permite reinvocar');
+ s.time=0;s.score=100;check(!buy(s,2)&&s.score===100,'No hay compras al terminar');
+ s=testGame();check(!s.helper&&s.score===0,'Reinicio sin stickman ni saldo');
  console.info('Imán de color: '+checks+' autopruebas correctas.');
 }
 </script>
