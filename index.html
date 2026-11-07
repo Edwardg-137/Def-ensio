@@ -37,7 +37,7 @@
 <div class="hud" id="hud" hidden><div class="stat"><label>PUNTOS</label><strong id="score">0</strong></div><div class="divider"></div><div class="stat"><label>TIEMPO</label><strong id="time">1:30</strong></div></div>
 <section id="shop" class="shop" aria-label="Tienda" hidden>
  <p>Tienda · compras sin pausa</p><div>
- <button disabled title="Elimina el color de la primera enemiga presente."><b>Barrido</b><span>10 puntos</span><small>Un color enemigo</small></button>
+ <button disabled title="Tu próxima eliminación manual activa el barrido de ese color."><b>Barrido</b><span>10 puntos</span><small>Próximo ataque</small></button>
  <button disabled title="Cada enemiga recibe un impulso desde la aliada más cercana."><b>Repulsión</b><span>15 puntos</span><small>Un pulso de tus aliadas</small></button>
  <button disabled><b>Stickman</b><span>25 puntos</span><small id="helper-status">180 px/s · 30 s</small></button>
  </div>
@@ -45,18 +45,18 @@
 <footer class="guide" id="guide">
  <div class="instruction"><div><b>Tu color suma +1.</b> Los demás restan −2 y convierten aliadas. Gasta puntos en la tienda durante la partida.</div></div>
  <div class="instruction"><div><b>Arrastra para apartar.</b><span class="mouse-copy"> Clic izquierdo.</span><span class="touch-copy"> Mantén y mueve.</span></div></div>
- <div class="instruction"><div><b>Elimina cada 1 s.</b><span class="mouse-copy"> Clic derecho.</span><span class="touch-copy"> Pulsa 0,4 s sin mover.</span></div></div>
+ <div class="instruction"><div><b>Elimina cada 5 s.</b><span class="mouse-copy"> Clic derecho.</span><span class="touch-copy"> Pulsa 0,4 s sin mover.</span></div></div>
 </footer>
 <div id="notice" class="notice" role="status" hidden></div>
 <noscript>Activa JavaScript para jugar a Imán de color.</noscript>
 <script>
 'use strict';
 const COLORS=['#355ce0','#d85843','#aa760b','#268570'];
-const R=14, PLAYER_R=23, COOLDOWN=1, DURATION=90, COSTS=[10,15,25];
+const R=14, PLAYER_R=23, COOLDOWN=5, DURATION=90, COSTS=[10,15,25];
 
 // La simulación solo recibe estado, tiempo y azar; no lee el DOM.
 function createGame(w,h){
- return {w,h,color:0,figures:[],nextId:1,score:0,time:DURATION,spawnClock:0,cooldown:0,drag:null,helper:null,events:[]};
+ return {w,h,color:0,figures:[],nextId:1,score:0,time:DURATION,spawnClock:0,cooldown:0,drag:null,helper:null,sweep:false,events:[]};
 }
 function distance(a,b){return Math.hypot(a.x-b.x,a.y-b.y)}
 function center(s){return {x:s.w/2,y:s.h/2}}
@@ -87,10 +87,11 @@ function eliminate(s,id){
  s.cooldown=COOLDOWN;
  if(s.drag&&s.drag.id===id)s.drag=null;
  s.events.push({type:'remove',x:f.x,y:f.y,color:f.color});
+ if(s.sweep){s.sweep=false;power(s,f.color)}
  return true;
 }
-function power(s,color=s.figures.find(f=>f.color!==s.color)?.color){
- if(color===undefined||color===s.color||!s.figures.some(f=>f.color===color))return false;
+function power(s,color){
+ if(color===s.color)return false;
  s.figures=s.figures.filter(f=>f.color!==color);
  if(s.drag&&!s.figures.some(f=>f.id===s.drag.id))s.drag=null;
  s.events.push({type:'power',color});
@@ -99,7 +100,7 @@ function power(s,color=s.figures.find(f=>f.color!==s.color)?.color){
 function buy(s,item){
  const cost=COSTS[item],allies=s.figures.filter(f=>f.color===s.color),enemies=s.figures.filter(f=>f.color!==s.color);
  if(!cost||s.time<=0||s.score<cost)return false;
- if(item===0){if(!power(s))return false}
+ if(item===0){if(s.sweep)return false;s.sweep=true}
  if(item===1){
   if(!allies.length||!enemies.length)return false;
   for(const f of enemies){
@@ -269,7 +270,8 @@ document.getElementById('play').addEventListener('click',begin);
 document.getElementById('retry').addEventListener('click',begin);
 function updateShop(){
  const enemy=game.figures.some(f=>f.color!==game.color),ally=game.figures.some(f=>f.color===game.color);
- shopButtons.forEach((b,i)=>{b.disabled=game.score<COSTS[i]||game.time<=0||(i===0&&!enemy)||(i===1&&(!enemy||!ally))||(i===2&&!!game.helper)});
+ shopButtons.forEach((b,i)=>{b.disabled=game.score<COSTS[i]||game.time<=0||(i===0&&game.sweep)||(i===1&&(!enemy||!ally))||(i===2&&!!game.helper)});
+ shopButtons[0].lastElementChild.textContent=game.sweep?'Preparado':'Próximo ataque';
  helperStatus.textContent=game.helper?'Activo · '+Math.ceil(game.helper.life)+' s':'180 px/s · 30 s';
 }
 shopButtons.forEach((b,i)=>b.addEventListener('click',()=>{
@@ -430,12 +432,12 @@ if(new URLSearchParams(location.search).get('test')==='1'){
  s=testGame();s.figures=[figure(1,500,500,1)];collisions(s);
  check(s.score===-2&&s.figures.length===0,'Contacto enemigo: -2 y desaparece');
  s=testGame();s.figures=[figure(1,100,100,1),figure(2,200,100,2)];
- check(eliminate(s,1)&&s.cooldown===1,'Ataque: cooldown global de 1 s');
+ check(eliminate(s,1)&&s.cooldown===5,'Ataque: cooldown global de 5 s');
  check(!eliminate(s,2)&&s.figures.length===1,'Cooldown bloquea ataques');
- for(let i=0;i<19;i++)update(s,.05,()=>.5);
- check(!eliminate(s,2),'Bloqueado antes de 1 s');
- update(s,.05,()=>.5);
- check(eliminate(s,2),'Ataque disponible tras 1 s');
+ for(let i=0;i<99;i++)update(s,.05,()=>.5);
+ check(!eliminate(s,2),'Bloqueado antes de 5 s');
+ update(s,.05,()=>.5);update(s,.001,()=>.5);
+ check(eliminate(s,2),'Ataque disponible tras 5 s');
  s=testGame();
  let seed=12345;
  const random=()=>((seed=(Math.imul(seed,1664525)+1013904223)>>>0)/4294967296);
@@ -460,25 +462,28 @@ if(new URLSearchParams(location.search).get('test')==='1'){
  check(s.score===10&&s.figures.length===1&&!s.events.some(e=>e.type==='power'),'Sin activación automática');
  s.score=9;const before=JSON.stringify(s);
  check(!buy(s,0)&&JSON.stringify(s)===before,'Sin saldo no hay cobro ni efecto');
- s.score=10;s.cooldown=.5;s.drag={id:2,x:100,y:100};s.figures.push(figure(3,150,100,1),figure(4,800,100,2),figure(5,100,800,0));
- check(buy(s,0)&&s.score===0&&s.figures.length===2&&!s.drag&&s.cooldown===.5,'Barrido: 10 puntos, un color enemigo, sin cooldown');
- check(s.figures.some(f=>f.color===0)&&s.figures.some(f=>f.color===2),'Conserva aliadas y otros colores');
+ s.score=20;s.cooldown=.5;s.figures.push(figure(3,150,100,1),figure(4,800,100,2),figure(5,100,800,0),figure(6,850,100,2));
+ check(buy(s,0)&&s.score===10&&s.figures.length===5&&s.sweep&&s.cooldown===.5,'Compra prepara sin eliminar');
+ check(!buy(s,0)&&s.score===10&&!eliminate(s,4)&&!eliminate(s,5)&&s.sweep,'Sin duplicados; intentos fallidos no consumen');
+ s.cooldown=0;s.drag={id:6,x:850,y:100};
+ check(eliminate(s,4)&&!s.sweep&&s.figures.length===3&&!s.drag&&s.figures.every(f=>f.color!==2),'Siguiente ataque barre su color');
+ check(s.figures.some(f=>f.color===0)&&s.figures.some(f=>f.color===1),'Conserva aliadas y otros colores');
  s=testGame();s.score=100;
- check(!buy(s,0)&&!buy(s,1)&&s.score===100,'Sin objetivos no se cobra');
+ check(buy(s,0)&&s.sweep&&!buy(s,1)&&s.score===90,'Se puede preparar sin objetivos');
  s.figures=[figure(1,100,200,0),figure(2,150,200,1),figure(3,800,800,0),figure(4,800,750,2)];
- check(buy(s,1)&&s.score===85&&s.figures[1].vx===400&&s.figures[3].vy===-400,'Repulsión: 15 puntos, desde la aliada más cercana');
+ check(buy(s,1)&&s.score===75&&s.figures[1].vx===400&&s.figures[3].vy===-400,'Repulsión: 15 puntos, desde la aliada más cercana');
  check(s.figures[1].impulse===.3&&s.figures[0].impulse===0,'Un solo impulso; aliadas intactas');
  s=testGame();s.score=50;s.figures=[figure(1,700,500,1),figure(2,100,100,0)];
  check(buy(s,2)&&s.score===25&&s.helper.life===30,'Stickman: 25 puntos y 30 s');
  check(!buy(s,2)&&s.score===25,'No se duplica el stickman activo');
- updateHelper(s,.05);
+ s.sweep=true;updateHelper(s,.05);
  check(Math.abs(s.helper.x-509)<1e-8,'Stickman a 180 px/s, más rápido que enemigas');
  updateHelper(s,1);
- check(s.figures.length===1&&s.figures[0].color===0&&s.score===25,'Stickman elimina solo enemigas, sin puntos extra');
+ check(s.figures.length===1&&s.figures[0].color===0&&s.score===25&&s.sweep,'Stickman no consume barrido ni suma puntos');
  updateHelper(s,s.helper.life-.05);check(!!s.helper,'Activo antes de 30 s');
  updateHelper(s,.05);check(!s.helper&&buy(s,2),'Expira a los 30 s y permite reinvocar');
  s.time=0;s.score=100;check(!buy(s,2)&&s.score===100,'No hay compras al terminar');
- s=testGame();check(!s.helper&&s.score===0,'Reinicio sin stickman ni saldo');
+ s=testGame();check(!s.helper&&!s.sweep&&s.score===0,'Reinicio sin efectos ni saldo');
  console.info('Imán de color: '+checks+' autopruebas correctas.');
 }
 </script>
